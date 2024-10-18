@@ -36,7 +36,20 @@ composer require alphasoft-fr/messenger-filesystem-transport
 
 ## 🛠️ Configuration
 
-Here is an example configuration for using `FilesystemTransport` in a Symfony project:
+### Activating the Bundle
+
+To activate the bundle, you need to add it manually in the `config/bundles.php` file of your Symfony project:
+
+```php
+// config/bundles.php
+
+return [
+    // ...
+    \AlphaSoft\Messenger\FilesystemTransport\AsMessengerFilesystemTransportBundle::class => ['all' => true],
+];
+```
+
+Here is an example configuration for using `FilesystemTransport` :
 
 ```yaml
 # config/packages/messenger.yaml
@@ -176,7 +189,19 @@ composer require alphasoft-fr/messenger-filesystem-transport
 
 ## 🛠️ Configuration
 
-Voici un exemple de configuration pour utiliser `FilesystemTransport` dans un projet Symfony :
+### Activation du Bundle
+
+Pour activer le bundle, vous devez l'ajouter manuellement dans le fichier `config/bundles.php` de votre projet Symfony :
+
+```php
+// config/bundles.php
+
+return [
+    // ...
+    \AlphaSoft\Messenger\FilesystemTransport\AsMessengerFilesystemTransportBundle::class => ['all' => true],
+];
+```
+Voici un exemple de configuration pour utiliser FilesystemTransport :
 
 ```yaml
 # config/packages/messenger.yaml

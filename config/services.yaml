@@ -1,0 +1,3 @@
+services:
+  AlphaSoft\Messenger\Transport\FilesystemTransportFactory:
+    tags: [ messenger.transport_factory ]

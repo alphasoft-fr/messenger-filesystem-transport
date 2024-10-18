@@ -7,7 +7,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class AsMessengerTransportBundle extends Bundle
+class AsMessengerFilesystemTransportBundle extends Bundle
 {
     public function build(ContainerBuilder $container)
     {
