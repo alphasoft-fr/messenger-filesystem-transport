@@ -38,7 +38,8 @@ final class FilesystemTransport implements TransportInterface
         $id = $this->generateUniqueId();
         $fileName = $this->generateFilenameById($id);
 
-        if (@file_put_contents($fileName, json_encode($serializedMessage), LOCK_EX) === false) {
+        $result = @file_put_contents($fileName, json_encode($serializedMessage), LOCK_EX);
+        if ($result === false) {
             throw new TransportException(sprintf('Could not write message to file "%s"', $fileName));
         }
 

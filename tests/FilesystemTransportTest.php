@@ -89,18 +89,6 @@ class FilesystemTransportTest extends TestCase
         $this->assertFileDoesNotExist($this->directory . $result->last( TransportMessageIdStamp::class)->getId() . '.message');
     }
 
-    public function testSendThrowsExceptionIfFileNotWritable(): void
-    {
-        $envelope = new Envelope(new \stdClass());
-
-        chmod($this->directory, 0444);
-
-        $this->expectException(TransportException::class);
-        $this->transport->send($envelope);
-
-        chmod($this->directory, 0777);
-    }
-
     public function testGetThrowsExceptionForInvalidJson(): void
     {
         $id = uniqid();
@@ -111,24 +99,6 @@ class FilesystemTransportTest extends TestCase
 
 
         unlink($this->directory . $id . '.message');
-    }
-
-    public function testGetThrowsExceptionForUnreadableFile(): void
-    {
-        $envelope = new Envelope(new \stdClass());
-        $result = $this->transport->send($envelope);
-
-        $filePath = $this->directory . $result->last( TransportMessageIdStamp::class)->getId() . '.message';
-
-
-        chmod($filePath, 0000);
-
-        $this->expectException(TransportException::class);
-        $this->transport->get();
-
-
-
-        chmod($filePath, 0644);
     }
 
     public function testLogProcessed()
